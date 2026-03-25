@@ -1,4 +1,5 @@
 import { FaFileSignature, FaPhoneAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export default function DistributorEnquiryPage() {
   const handleSubmit = (event) => {
@@ -91,9 +92,9 @@ export default function DistributorEnquiryPage() {
             <a href="tel:+919558026993" className="btn light">
               <FaPhoneAlt aria-hidden="true" /> 95580 26993
             </a>
-            <a href="/contact-us" className="btn light">
+            <Link to="/contact-us" className="btn light">
               <FaFileSignature aria-hidden="true" /> Get A Free Quote
-            </a>
+            </Link>
           </div>
         </div>
       </section>

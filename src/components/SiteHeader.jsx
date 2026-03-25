@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { productCategories } from '../data/productCatalog';
 
@@ -48,9 +49,9 @@ export default function SiteHeader({ currentPath }) {
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <a href="/" className="brand-link" aria-label="Nissanol Home">
+        <Link to="/" className="brand-link" aria-label="Nissanol Home">
           <img src="/assets/logo.jpeg" alt="Nissanol" className="brand-logo" />
-        </a>
+        </Link>
 
         <button
           type="button"
@@ -86,43 +87,57 @@ export default function SiteHeader({ currentPath }) {
   }
 }}
                 >
-                  <a
-                    href={item.path}
+                  <Link
+                    to={item.path}
                     className={`nav-link ${isActive(currentPath, item.path) ? 'active' : ''}`}
                     onClick={handleProductsClick}
                     aria-haspopup="menu"
                     aria-expanded={productsOpen}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                   <div className="products-dropdown" role="menu" aria-label="Product categories">
                     {productMenuItems.map((category) => (
-                      <a
+                      <Link
                         key={category.slug}
-                        href={`/products/${category.slug}`}
+                        to={`/products/${category.slug}`}
                         className="products-dropdown-link"
                         role="menuitem"
                         onClick={closeMenus}
                       >
                         {category.title}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
               );
             }
 
+            if (item.newTab) {
+              return (
+                <div key={item.path} className="nav-item">
+                  <a
+                    href={item.path}
+                    className={`nav-link ${isActive(currentPath, item.path) ? 'active' : ''}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={closeMenus}
+                  >
+                    {item.label}
+                  </a>
+                </div>
+              );
+            }
+
             return (
               <div key={item.path} className="nav-item">
-                <a
-                  href={item.path}
+                <Link
+                  to={item.path}
                   className={`nav-link ${isActive(currentPath, item.path) ? 'active' : ''}`}
-                  target={item.newTab ? '_blank' : undefined}
-                  rel={item.newTab ? 'noreferrer' : undefined}
                   onClick={closeMenus}
                 >
                   {item.label}
-                </a>
+                </Link>
               </div>
             );
           })}
@@ -132,9 +147,9 @@ export default function SiteHeader({ currentPath }) {
           <a href="tel:+919558026993" className="pill-btn">
             <FaPhoneAlt aria-hidden="true" /> +91 95580 26993
           </a>
-          <a href="/contact-us" className="pill-btn ghost">
+          <Link to="/contact-us" className="pill-btn ghost">
             Get A Free Quote
-          </a>
+          </Link>
         </div>
       </div>
     </header>

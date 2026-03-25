@@ -1,4 +1,4 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { FaFileSignature, FaMapMarkerAlt, FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { productCategories, productsByCategory } from '../data/productCatalog';
@@ -48,7 +48,7 @@ export default function ProductsPage() {
         </header>
 
         <div className="container products-breadcrumb">
-          <a href="/">Home</a> / <span>{currentCategory.title}</span>
+          <Link to="/">Home</Link> / <span>{currentCategory.title}</span>
         </div>
 
         <div className="container products-layout">
@@ -57,7 +57,7 @@ export default function ProductsPage() {
             <ul>
               {productCategories.map((category) => (
                 <li key={category.slug} className={category.slug === categorySlug ? 'active' : ''}>
-                  <a href={`/products/${category.slug}`}>{category.title}</a>
+                  <Link to={`/products/${category.slug}`}>{category.title}</Link>
                 </li>
               ))}
             </ul>
@@ -100,9 +100,9 @@ export default function ProductsPage() {
             <a href="tel:+919558026993" className="btn light">
               <FaPhoneAlt aria-hidden="true" /> 95580 26993
             </a>
-            <a href="/contact-us" className="btn light">
+            <Link to="/contact-us" className="btn light">
               <FaFileSignature aria-hidden="true" /> Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </section>

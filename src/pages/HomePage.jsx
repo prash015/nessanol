@@ -1,4 +1,5 @@
 import { FaDownload, FaPhoneAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { productCategories, oemPartners, testimonials, globalStats } from '../data/homeData';
 
 function initials(name) {
@@ -43,8 +44,8 @@ export default function HomePage() {
               products and dependable service support.
             </p>
             <div className="cta-row">
-              <a href="/about-us" className="btn primary">Read More</a>
-              <a href="/contact-us" className="btn secondary">Get A Free Quote</a>
+              <Link to="/about-us" className="btn primary">Read More</Link>
+              <Link to="/contact-us" className="btn secondary">Get A Free Quote</Link>
             </div>
           </article>
 
@@ -88,12 +89,12 @@ export default function HomePage() {
           <h2 className="section-heading">Product Categories</h2>
           <div className="products-grid">
             {productCategories.map((category) => (
-              <a href={`/products/${category.slug}`} key={category.title} className="product-card">
+              <Link to={`/products/${category.slug}`} key={category.title} className="product-card">
                 <div className="product-image-wrap">
                   <img src={category.image} alt={category.title} />
                 </div>
                 <div className="product-label">{category.title}</div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -134,7 +135,7 @@ export default function HomePage() {
             <a href="tel:+919558026993" className="btn light">
               <FaPhoneAlt aria-hidden="true" /> 95580 26993
             </a>
-            <a href="/contact-us" className="btn light">Contact Us</a>
+            <Link to="/contact-us" className="btn light">Contact Us</Link>
           </div>
         </div>
       </section>

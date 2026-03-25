@@ -1,5 +1,6 @@
 import { FaChevronRight, FaFacebookF, FaInstagram, FaMapMarkerAlt, FaPhoneAlt, FaTwitter, FaWhatsapp, FaYoutube } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 const quickLinks = [
   { label: 'Home', href: '/' },
@@ -28,19 +29,21 @@ export default function SiteFooter() {
 
         <section className="footer-links">
           <h3>Quick Links</h3>
-          <ul>
-            {quickLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  target={link.newTab ? '_blank' : undefined}
-                  rel={link.newTab ? 'noreferrer' : undefined}
-                >
-                  <FaChevronRight aria-hidden="true" /> {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+            <ul>
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  {link.newTab ? (
+                    <a href={link.href} target="_blank" rel="noreferrer">
+                      <FaChevronRight aria-hidden="true" /> {link.label}
+                    </a>
+                  ) : (
+                    <Link to={link.href}>
+                      <FaChevronRight aria-hidden="true" /> {link.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
         </section>
 
         <section className="footer-contact">
